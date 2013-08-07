@@ -1,6 +1,6 @@
 <?php
-require_once("simple_html_dom.php");
-require_once("twilio-php-master/Services/Twilio.php");
+require_once("lib/simple_html_dom.php");
+require_once("lib/twilio-php-master/Services/Twilio.php");
 $config = parse_ini_file("tcdisrupt.ini");
 
 function sendMsg($message,$number) {
