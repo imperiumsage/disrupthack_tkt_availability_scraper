@@ -1,8 +1,9 @@
 <?php
+date_default_timezone_set('America/Los_Angeles');
 require_once("lib/simple_html_dom.php");
 require_once("lib/twilio-php-master/Services/Twilio.php");
 $config = parse_ini_file("tcdisrupt.ini");
-
+$hour = date('G');
 function sendMsg($message,$number) {
 	global $config;
 	// set your AccountSid and AuthToken from www.twilio.com/user/account
@@ -30,6 +31,9 @@ $rowCells = $html->find('tr[class="ticket_row"] td');
 $cellContents = $rowCells[4]->innertext;
 if(stristr($cellContents,"soldout") !== false) {
 	print "Still soldout!\n";
+	if($hour == "9") {
+		sendMsg("DisruptHack 2013 tickets still sold out!",$config['to_phone']);	
+	}
 } else {
 	sendMsg("DisruptHack tickets available at $URL",$config['to_phone']);
 }
