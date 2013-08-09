@@ -29,7 +29,7 @@ $html = file_get_html($URL);
 $rowCells = $html->find('tr[class="ticket_row"] td');
 //last cell is index = 4, contains availability status
 $cellContents = $rowCells[4]->innertext;
-if(stristr($cellContents,"soldout") !== false) {
+if(stristr($cellContents,"'soldout'") !== false || stristr($cellContents,"'na'") !== false) {
 	print date('Y-m-d H:i:s').":Still soldout!\n";
 } else {
 	sendMsg("DisruptHack tickets available at $URL",$config['to_phone']);
