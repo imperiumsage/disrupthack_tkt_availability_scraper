@@ -54,8 +54,9 @@ if(stristr($cellContents,"'soldout'") !== false || stristr($cellContents,"'na'")
 	print date('Y-m-d H:i:s').":Still soldout!\n";
 	//sendTweet("Still sold out!");
 } else {
-	sendMsg("DisruptHack tickets available at $URL",$config['to_phone']);
-	sendTweet("DisruptHack tickets available at $URL");
+	print date('Y-m-d H:i:s').":Available!\n";
+	//sendMsg("DisruptHack tickets available at $URL",$config['to_phone']);
+	//sendTweet("DisruptHack tickets available at $URL");
 }
 
 
